@@ -2,16 +2,10 @@ import json
 import random
 import re
 
-# /////
-
 didict = {}
 english_pattern = re.compile(r'(([A-z])+-?\s?([A-z])+\b)')
 
-
-
-
-##Проверка и получение пользовательских данных
-def import_data_json():
+def import_data_json():##Проверка и получение пользовательских данных
     try:
         with open("ndtname.json", 'r') as read_file:
             data = json.load(read_file)
@@ -20,16 +14,11 @@ def import_data_json():
         print("Файл пуст, создаем новый.")
         m1 = input_data()
         export_data_json(m1)
-
     return m1
-
-
 
 def export_data_json(data):  # запись и переоткрытие внесенных данных
     with open("ndtname.json", 'w') as savefile:
         json.dump(data, savefile, indent=4)
-
-
 
 def input_data():  # Функция внесения данных
     dictindex = {}
@@ -60,8 +49,6 @@ def input_data():  # Функция внесения данных
         dictindex.update({value: listbild})
     return dictindex
 
-print(('vuyug' in [c for d, c in import_data_json().items()]))
-
 def my_decorator(test):
     def dec(wrapped):
         def inner(*args, **kwargs):
@@ -81,7 +68,6 @@ def GenAddNum_ranodm(dic):
                 print(key, random.choice(dic[key]))
         else:
             print(key, random.choice(dic[key]))
-
 
 def main():
     GenAddNum_ranodm(import_data_json())
