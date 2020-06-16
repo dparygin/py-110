@@ -9,16 +9,36 @@ def import_data_json():##Проверка и получение пользова
     try:
         with open("ndtname.json", 'r') as read_file:
             data = json.load(read_file)
-            m1 = data
     except FileNotFoundError:
         print("Файл пуст, создаем новый.")
-        m1 = input_data()
-        export_data_json(m1)
-    return m1
+        data = input_data()
+        export_data_json(data)
+    return data
 
 def export_data_json(data):  # запись и переоткрытие внесенных данных
     with open("ndtname.json", 'w') as savefile:
         json.dump(data, savefile, indent=4)
+
+def import_test_file(data):  # запись и переоткрытие внесенных данных
+    dictindex = {}
+    for key, value in ({'contry': 'страну', 'city': "город", 'street': "улицу"}).items():
+        listtrue = []  # Обнуляем список
+        listerorr = []
+        while len(listtrue) < 1:  # Цикл с проверкой заполнения
+            for word in input("Введите " + value + " (eng.) используя пробелы: ").split():
+                if not re.match(english_pattern, word):  # Проверка ввода
+                    listerorr.append(word)
+                else:
+                    listtrue.append(word)
+
+    for value in ('bild', 'kv'):
+        i1 = int(0)
+        listbild = []
+        while i1 < 9:
+            i1 = i1 + 1
+            listbild.append(random.randint(0, 100))
+        dictindex.update({value: listbild})
+    return dictindex
 
 def input_data():  # Функция внесения данных
     dictindex = {}
