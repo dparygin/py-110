@@ -9,12 +9,11 @@ def import_data_json():##Проверка и получение пользова
     try:
         with open("ndtname.json", 'r') as read_file:
             data = json.load(read_file)
-            m1 = data
     except FileNotFoundError:
         print("Файл пуст, создаем новый.")
-        m1 = input_data()
-        export_data_json(m1)
-    return m1
+        data = input_data()
+        export_data_json(data)
+    return data
 
 def export_data_json(data):  # запись и переоткрытие внесенных данных
     with open("ndtname.json", 'w') as savefile:
