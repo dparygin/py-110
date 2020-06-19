@@ -17,9 +17,9 @@ def input_data(data):  # Проверка корректности данных
         if not isinstance(list, listd):
             return False
         if len(listd) >= 2:
-        for word in listd:
-            if not re.match(english_pattern, word):
-                return False
+            for word in listd:
+                if not re.match(english_pattern, word):
+                    return False
     return True
 
 def my_decorator(test):
@@ -34,16 +34,17 @@ def my_decorator(test):
 
 @my_decorator('xaxa')
 def GenAddNum_ranodm(dic):
-    print("Генерация случайных адресов: ")
+    ret = {}
     for key in dic:
         if key == 'bild':
             if random.randrange(0, 2, 1):
-                print(key, random.choice(dic[key]))
+                ret.update(key: random.choice(dic[key]))
         else:
-            print(key, random.choice(dic[key]))
+            ret.update(key: random.choice(dic[key]))
+    return ret
 
 def main():
-    GenAddNum_ranodm(import_data_json())
+    print(GenAddNum_ranodm(import_data_json()))
 
 
 if __name__ == "__main__":
