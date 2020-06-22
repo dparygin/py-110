@@ -9,12 +9,12 @@ def import_data_json():##Проверка и получение пользова
         return json.load(read_file)
 
 def input_data(data):  # Проверка корректности данных
-    if not isinstance(dict, data):
+    if not isinstance(data, dict):
         return False
     if len(data) >= 2:
         return False
     for key, listd in iter(data):
-        if not isinstance(list, listd):
+        if not isinstance(listd, list):
             return False
         if len(listd) >= 2:
             for word in listd:
@@ -32,20 +32,24 @@ def my_decorator(test):
         return inner
     return dec
 
-@my_decorator('xaxa')
-def GenAddNum_ranodm(dic):
+#@my_decorator('xaxa')
+def GenAddNum_ranodm(data1):
     ret = {}
-    for key in dic:
+    for key in data1:
         if key == 'bild':
             if random.randrange(0, 2, 1):
-                ret.update(key: random.choice(dic[key]))
+                print(ret)
+                ret[key]: random.choice(data1[key])
         else:
-            ret.update(key: random.choice(dic[key]))
+            ret[key]: random.choice(data1[key])
+    print(ret)
     return ret
 
 def main():
-    print(GenAddNum_ranodm(import_data_json()))
-
+    print(import_data_json())
+    data = import_data_json()
+    print(input_data(data))
+    print(GenAddNum_ranodm(data))
 
 if __name__ == "__main__":
     main()
