@@ -14,7 +14,7 @@ def import_data_json():
     with open("ndtname.json", 'r') as read_file:
         return json.load(read_file)
 
-def input_data(data):
+def check_data(data):
     """
      Проверка корректности данных
     """
@@ -45,18 +45,18 @@ def my_decorator(test):
     return dec
 
 #@my_decorator('xaxa')
-def GenAddNum_ranodm(data1):
-    print(data1)
-    ret = {}
-    for key in data1:
-        if key == 'bild' and random.randrange(0, 2, 1):
-            print(key, random.choice(data1[key]))
-        else:
-            print(key, random.choice(data1[key]))
-    return ret
+def gen_add_num_ranodm(data):
+    retur = {}
+    for k1ery in data:
+        if not (k1ery == 'bild' and random.randrange(0, 2, 1)):
+            retur.update({k1ery: random.choice(data[k1ery])})
+    return retur
 
 def main():
-    GenAddNum_ranodm(import_data_json())
+    if not check_data(import_data_json()):
+        print(gen_add_num_ranodm(import_data_json()))
+    else:
+        print("Данные введены некорректно!")
 
 if __name__ == "__main__":
     main()
