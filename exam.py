@@ -1,14 +1,23 @@
+"""
+Модуль генерации случайных адресов
+"""
 import json
 import random
 import re
 
 english_pattern = re.compile(r'(([A-z])+-?\s?([A-z])+\b)')
 
-def import_data_json():##Проверка и получение пользовательских данных
+def import_data_json():
+    """
+    Импорт пользовательских данных
+    """
     with open("ndtname.json", 'r') as read_file:
         return json.load(read_file)
 
-def input_data(data):  # Проверка корректности данных
+def input_data(data):
+    """
+     Проверка корректности данных
+    """
     if not isinstance(data, dict):
         return False
     if len(data) >= 2:
@@ -23,6 +32,9 @@ def input_data(data):  # Проверка корректности данных
     return True
 
 def my_decorator(test):
+    """
+    Декоратор
+    """
     def dec(wrapped):
         def inner(*args, **kwargs):
             if not (test in [c for d, c in import_data_json().items()]):
@@ -34,22 +46,17 @@ def my_decorator(test):
 
 #@my_decorator('xaxa')
 def GenAddNum_ranodm(data1):
+    print(data1)
     ret = {}
     for key in data1:
-        if key == 'bild':
-            if random.randrange(0, 2, 1):
-                print(ret)
-                ret[key]: random.choice(data1[key])
+        if key == 'bild' and random.randrange(0, 2, 1):
+            print(key, random.choice(data1[key]))
         else:
-            ret[key]: random.choice(data1[key])
-    print(ret)
+            print(key, random.choice(data1[key]))
     return ret
 
 def main():
-    print(import_data_json())
-    data = import_data_json()
-    print(input_data(data))
-    print(GenAddNum_ranodm(data))
+    GenAddNum_ranodm(import_data_json())
 
 if __name__ == "__main__":
     main()
