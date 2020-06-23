@@ -7,6 +7,7 @@ import re
 
 english_pattern = re.compile(r'(([A-z])+-?\s?([A-z])+\b)')
 
+
 def import_data_json():
     """
      Импорт пользовательских данных
@@ -32,6 +33,7 @@ def check_data(data):
             for word in data[key]:
                 if not isinstance(word,int):
                     if not re.match(english_pattern, word):
+                        # Проверяем соответствие паттерну
                         return False
     return True
 
@@ -66,13 +68,14 @@ def gen_add_num_ranodm(data):
 def main():
     if check_data(import_data_json()):
         h = 0
-        while h <= 6:
+        while h <= 6: # Число сгенерированных адресов
             for key, vaule in gen_add_num_ranodm(import_data_json()).items():
                 print(key, vaule)
             h += 1
             print('\n')
     else:
         print("Файл содержит некорректные данные!")
+
 
 if __name__ == "__main__":
     main()
