@@ -1,5 +1,5 @@
 {
-    "contry": [
+    "Contry": [
         "French Guiana",
         "French Polynesia",
         "French Southern Territories",
@@ -26,7 +26,7 @@
         "Iraq",
         "Ireland"
     ],
-    "city": [
+    "City": [
         "Penopolis",
         "Saint-Kruze",
         "Volgodonsk",
@@ -34,7 +34,7 @@
         "Vitebsk",
         "Praha"
     ],
-    "street": [
+    "Street": [
         "Leninskiy pr.",
         "Moskovskaya st.",
         "Garajniy pr.",
